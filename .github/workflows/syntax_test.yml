@@ -1,0 +1,19 @@
+name: Syntax Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  syntax_test:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Run Syntax Tests
+        run: |
+          python -m unittest discover -s .
